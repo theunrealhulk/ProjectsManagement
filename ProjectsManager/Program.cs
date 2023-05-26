@@ -7,6 +7,7 @@ using ProjectsManager.Data;
 
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.IdentityModel.Tokens;
+using ProjectsManager.Services.ProjectService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
     AddJwtBearer(options =>
     {

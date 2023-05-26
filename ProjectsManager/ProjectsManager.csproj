@@ -27,8 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Assignment\" />
-    <Folder Include="Dtos\Project\" />
-    <Folder Include="Services\" />
+    <Folder Include="Services\AssignmentService\" />
   </ItemGroup>
 
 </Project>

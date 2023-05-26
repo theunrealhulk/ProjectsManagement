@@ -1,4 +1,6 @@
-﻿namespace ProjectsManager.Data
+﻿using ProjectsManager.Services;
+
+namespace ProjectsManager.Data
 {
     public interface IAuthRepository
     {

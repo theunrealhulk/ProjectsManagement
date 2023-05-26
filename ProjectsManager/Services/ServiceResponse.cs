@@ -1,4 +1,4 @@
-﻿namespace ProjectsManager.Models
+﻿namespace ProjectsManager.Services
 {
     public class ServiceResponse<T>
     {
