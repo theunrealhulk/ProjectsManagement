@@ -1,0 +1,12 @@
+<div>
+  Name:
+  <input type="text" [(ngModel)] = "user.username">
+</div>
+<div>
+  Password:
+  <input type="password" [(ngModel)] = "user.password">
+</div>
+<button (click)="register(user)">Register</button>
+<button (click)="login(user)">Login</button>
+<button (click)="getAllProjects()">all projects</button>
+
