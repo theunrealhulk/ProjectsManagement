@@ -14,6 +14,7 @@ namespace ProjectsManager.Services.ProjectService
         Task<ServiceResponse<GetProjectDto>> AddAssignment(AddAssignmentDto newAssignment);
         Task<ServiceResponse<GetProjectDto>> UdpateAssignment( UpdateAssignmentDto UpdatedAssignment);
         Task<ServiceResponse<GetProjectDto>> DeleteAssignment(int id);
+        Task<ServiceResponse<List<GetAssignmentDto>>> GetUserAssignments(int id);
 
     }
 }

@@ -90,6 +90,15 @@ namespace ProjectsManager.Controllers
             }
             return Ok(response);
         }
-
+        [HttpGet("UserAssignment/{id:int}")]
+        public async Task<ActionResult<ServiceResponse<GetProjectDto>>> getUserAssignments(int id)
+        {
+            var response = await _projectService.GetUserAssignments(id);
+            if (response.Data == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
+        }
     }
 }
