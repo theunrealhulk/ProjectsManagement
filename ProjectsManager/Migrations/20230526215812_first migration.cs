@@ -41,7 +41,7 @@ namespace ProjectsManager.Migrations
                     DueDate = table.Column<DateOnly>(type: "date", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,7 +50,8 @@ namespace ProjectsManager.Migrations
                         name: "FK_Projects_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -64,7 +65,7 @@ namespace ProjectsManager.Migrations
                     Description = table.Column<string>(type: "longtext", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    AssigneeId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateOnly>(type: "date", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
@@ -79,8 +80,8 @@ namespace ProjectsManager.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Assignments_Users_AssigneeId",
-                        column: x => x.AssigneeId,
+                        name: "FK_Assignments_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -88,14 +89,14 @@ namespace ProjectsManager.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Assignments_AssigneeId",
-                table: "Assignments",
-                column: "AssigneeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Assignments_ProjectId",
                 table: "Assignments",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assignments_UserId",
+                table: "Assignments",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_UserId",

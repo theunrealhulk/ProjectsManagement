@@ -25,9 +25,4 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\Assignment\" />
-    <Folder Include="Services\AssignmentService\" />
-  </ItemGroup>
-
 </Project>

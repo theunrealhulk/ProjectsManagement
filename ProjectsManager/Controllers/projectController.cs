@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjectsManager.Dtos.AssignmentDTO;
 using ProjectsManager.Dtos.Project;
 using ProjectsManager.Models;
 using ProjectsManager.Services;
@@ -24,6 +25,11 @@ namespace ProjectsManager.Controllers
 
         [HttpGet("UserProjects")]
         public async Task<ActionResult<ServiceResponse<List<GetProjectDto>>>> Getproject()
+        {
+            return Ok(await _projectService.GetUserProject());
+        }
+        [HttpGet("AllProjects")]
+        public async Task<ActionResult<ServiceResponse<List<GetProjectDto>>>> GetAllProjects()
         {
             return Ok(await _projectService.GetAllProject());
         }
@@ -58,6 +64,31 @@ namespace ProjectsManager.Controllers
             }
             return Ok(response);
 
+        }
+        [HttpPost("addAssignment")]
+        public async Task<ActionResult<ServiceResponse<GetProjectDto>>> AddAssignment(AddAssignmentDto newAssignment)
+        {
+            return Ok(await _projectService.AddAssignment(newAssignment));
+        }
+        [HttpPut("assignment")]
+        public async Task<ActionResult<ServiceResponse<GetProjectDto>>> UpdateAssignment(UpdateAssignmentDto updateAssignment)
+        {
+            var response = await _projectService.UdpateAssignment(updateAssignment);
+            if (response.Data == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
+        }
+        [HttpDelete("assignment/{id:int}")]
+        public async Task<ActionResult<ServiceResponse<GetProjectDto>>> DeleteAssignment(int id)
+        {
+            var response = await _projectService.DeleteAssignment(id);
+            if (response.Data == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
         }
 
     }

@@ -11,7 +11,7 @@ using ProjectsManager.Data;
 namespace ProjectsManager.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230526104753_first migration")]
+    [Migration("20230526215812_first migration")]
     partial class firstmigration
     {
         /// <inheritdoc />
@@ -26,9 +26,6 @@ namespace ProjectsManager.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("AssigneeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -54,11 +51,14 @@ namespace ProjectsManager.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AssigneeId");
-
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Assignments");
                 });
@@ -82,7 +82,7 @@ namespace ProjectsManager.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -117,28 +117,37 @@ namespace ProjectsManager.Migrations
 
             modelBuilder.Entity("ProjectsManager.Models.Assignment", b =>
                 {
-                    b.HasOne("ProjectsManager.Models.User", "Assignee")
-                        .WithMany("Assignments")
-                        .HasForeignKey("AssigneeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ProjectsManager.Models.Project", "Project")
-                        .WithMany()
+                        .WithMany("Assignments")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Assignee");
+                    b.HasOne("ProjectsManager.Models.User", "User")
+                        .WithMany("Assignments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ProjectsManager.Models.Project", b =>
                 {
-                    b.HasOne("ProjectsManager.Models.User", null)
+                    b.HasOne("ProjectsManager.Models.User", "User")
                         .WithMany("Projects")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProjectsManager.Models.Project", b =>
+                {
+                    b.Navigation("Assignments");
                 });
 
             modelBuilder.Entity("ProjectsManager.Models.User", b =>
