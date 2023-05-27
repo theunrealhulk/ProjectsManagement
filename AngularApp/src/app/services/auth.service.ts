@@ -8,6 +8,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private url:string = 'https://localhost:7032/api';
+
   constructor(private http:HttpClient) { }
   public register(user:User):Observable<any>{
     return this.http.post<any>(`${this.url}/Auth/register`,user);
@@ -19,9 +20,9 @@ export class AuthService {
     return this.http.get<any>(`${this.url}/Project/AllProjects`,{});
   }
   public logout(){
-    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
   }
   public isLoggedIn(){
-    return localStorage.getItem('user')!=null;
+    return localStorage.getItem('authToken')!=null;
   }
 }

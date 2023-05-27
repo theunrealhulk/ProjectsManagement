@@ -1,12 +1,29 @@
-<div>
-  Name:
-  <input type="text" [(ngModel)] = "user.username">
-</div>
-<div>
-  Password:
-  <input type="password" [(ngModel)] = "user.password">
-</div>
-<button (click)="register(user)">Register</button>
-<button (click)="login(user)">Login</button>
-<button (click)="getAllProjects()">all projects</button>
+<div style="max-width:400px; margin: auto; padding: 1rem;">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Authentication</mat-card-title>
+      <mat-card-subtitle>login or register new User</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label><mat-icon>person</mat-icon>username</mat-label>
+          <input matInput name="username" placeholder="username" required [(ngModel)] ="user.username" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label><mat-icon>lock</mat-icon>password</mat-label>
+          <input matInput placeholder="username" type="password" required name="password" [(ngModel)] ="user.password">
+        </mat-form-field>
+        <section>
 
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" (click)="login(user)"><mat-icon>login</mat-icon>Login</button>
+            <button mat-raised-button color="accent" (click)="register(user)"><mat-icon>add_circle</mat-icon>Register</button>
+          </div>
+        </section>
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
