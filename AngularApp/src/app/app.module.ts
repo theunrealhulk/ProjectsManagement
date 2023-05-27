@@ -19,7 +19,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 // import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { CommonModule } from '@angular/common';
     MatDividerModule,
     MatButtonModule,
     CommonModule,
-
+    MatToolbarModule,
+    MatBadgeModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

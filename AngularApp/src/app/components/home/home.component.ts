@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent  implements OnInit {
   constructor(private authService: AuthService){}
+
   ngOnInit(){
     console.log('checking iof user already logged in');
     console.log(this.authService);
