@@ -18,4 +18,10 @@ export class AuthService {
   public getAllProjects():Observable<any>{
     return this.http.get<any>(`${this.url}/Project/AllProjects`,{});
   }
+  public logout(){
+    localStorage.removeItem('user');
+  }
+  public isLoggedIn(){
+    return localStorage.getItem('user')!=null;
+  }
 }

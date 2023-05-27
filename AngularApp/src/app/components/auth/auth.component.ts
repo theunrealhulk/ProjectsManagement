@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
-import { User } from './models/user';
-import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
-import { Token } from '@angular/compiler';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
-export class AppComponent {
-  title = 'AngularApp';
+export class AuthComponent {
   user = new User();
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService){}
 
   register(user:User){
     this.authService.register(user).subscribe((data)=>{
@@ -33,7 +30,6 @@ export class AppComponent {
   getAllProjects(){
     this.authService.getAllProjects().subscribe((res)=>{
       console.log(res.data);
-
     })
   }
 }
