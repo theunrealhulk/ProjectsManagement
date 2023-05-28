@@ -8,7 +8,7 @@
         public Project Project { get; set; }
         public Status Status { get; set; } = Status.todo;
         public User User { get; set; }
-        public DateOnly? DueDate { get; set; }
+        public DateTime DueDate { get; set; } = DateTime.Now;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now; 
     }

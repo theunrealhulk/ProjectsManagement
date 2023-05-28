@@ -33,6 +33,11 @@ namespace ProjectsManager.Controllers
         {
             return Ok(await _projectService.GetAllProject());
         }
+        [HttpGet("AllAssignments")]
+        public async Task<ActionResult<ServiceResponse<List<GetProjectDto>>>> GetAllAssignments()
+        {
+            return Ok(await _projectService.GetAllAssignments());
+        }
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ServiceResponse<List<GetProjectDto>>>> GetSingle(int id)
         {

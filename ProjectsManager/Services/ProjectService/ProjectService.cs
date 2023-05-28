@@ -253,6 +253,17 @@ namespace ProjectsManager.Services.ProjectService
             }
             return response;
         }
+
+        public async Task<ServiceResponse<List<GetAssignmentDto>>> GetAllAssignments()
+        {
+            var response = new ServiceResponse<List<GetAssignmentDto>>();
+            var projects = await _context.Assignments
+                .Include(a => a.User)
+                .Include(a=>a.Project)
+                .ToListAsync();
+            response.Data = projects.Select(p => _mapper.Map<GetAssignmentDto>(p)).ToList();
+            return response;
+        }
     }
     
 }

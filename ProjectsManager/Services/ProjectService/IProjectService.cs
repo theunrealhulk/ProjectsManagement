@@ -7,6 +7,7 @@ namespace ProjectsManager.Services.ProjectService
     {
         Task<ServiceResponse<List<GetProjectDto>>> GetUserProject();
         Task<ServiceResponse<List<GetProjectDto>>> GetAllProject();
+        Task<ServiceResponse<List<GetAssignmentDto>>> GetAllAssignments();
         Task<ServiceResponse<GetProjectDto>> GetProject(int id);
         Task<ServiceResponse<List<GetProjectDto>>> AddProject(AddProjectDto addProject);
         Task<ServiceResponse<GetProjectDto>> UpdateProject(UpdateProjectDto addProject);

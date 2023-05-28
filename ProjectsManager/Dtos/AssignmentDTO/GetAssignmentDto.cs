@@ -1,4 +1,6 @@
-﻿namespace ProjectsManager.Dtos.AssignmentDTO
+﻿using ProjectsManager.Dtos.Project;
+
+namespace ProjectsManager.Dtos.AssignmentDTO
 {
     public class GetAssignmentDto
     {
@@ -8,7 +10,7 @@
         public int ProjectId { get; set; }
         public Status Status { get; set; } = Status.todo;
         public int UserId { get; set; }
-        public DateOnly? DueDate { get; set; }
+        public DateTime DueDate { get; set; } = DateTime.Now;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }
