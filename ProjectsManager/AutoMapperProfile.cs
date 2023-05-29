@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjectsManager.Dtos.AssignmentDTO;
 using ProjectsManager.Dtos.Project;
+using ProjectsManager.Dtos.UserDTO;
 
 namespace ProjectsManager
 {
@@ -14,6 +15,7 @@ namespace ProjectsManager
             CreateMap<Assignment, GetAssignmentDto>();
             CreateMap<AddAssignmentDto, Assignment>();
             CreateMap<UpdateAssignmentDto, Assignment>();
+            CreateMap<User, GetUserDto>();
         }
     }
 }

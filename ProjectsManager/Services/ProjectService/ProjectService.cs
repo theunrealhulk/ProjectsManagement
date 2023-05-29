@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Data;
 using ProjectsManager.Dtos.AssignmentDTO;
 using ProjectsManager.Dtos.Project;
+using ProjectsManager.Dtos.UserDTO;
 using System.Security.Claims;
 
 namespace ProjectsManager.Services.ProjectService
@@ -262,6 +263,14 @@ namespace ProjectsManager.Services.ProjectService
                 .Include(a=>a.Project)
                 .ToListAsync();
             response.Data = projects.Select(p => _mapper.Map<GetAssignmentDto>(p)).ToList();
+            return response;
+        }
+
+        public async Task<ServiceResponse<List<GetUserDto>>> GetUsers()
+        {
+            var response = new ServiceResponse<List<GetUserDto>>();
+            var users = await _context.Users.ToListAsync();
+            response.Data = users.Select(u => _mapper.Map<GetUserDto>(u)).ToList();
             return response;
         }
     }

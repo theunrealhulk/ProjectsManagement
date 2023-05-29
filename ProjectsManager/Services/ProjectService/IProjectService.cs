@@ -1,5 +1,6 @@
 ﻿using ProjectsManager.Dtos.AssignmentDTO;
 using ProjectsManager.Dtos.Project;
+using ProjectsManager.Dtos.UserDTO;
 
 namespace ProjectsManager.Services.ProjectService
 {
@@ -16,6 +17,7 @@ namespace ProjectsManager.Services.ProjectService
         Task<ServiceResponse<GetProjectDto>> UdpateAssignment( UpdateAssignmentDto UpdatedAssignment);
         Task<ServiceResponse<GetProjectDto>> DeleteAssignment(int id);
         Task<ServiceResponse<List<GetAssignmentDto>>> GetUserAssignments(int id);
+        Task<ServiceResponse<List<GetUserDto>>> GetUsers();
 
     }
 }
