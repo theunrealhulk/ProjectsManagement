@@ -22,6 +22,18 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ItemViewComponent } from './components/item-view/item-view.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AssignmentDataComponent } from './components/assignment-data/assignment-data.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';;
+import {MatNativeDateModule} from '@angular/material/core';
+
+
+
 // import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
@@ -29,7 +41,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AuthComponent,
     DashboardComponent,
     C404Component,
-    HomeComponent
+    HomeComponent,
+    ItemViewComponent,
+    AssignmentDataComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -47,6 +63,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatToolbarModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    JwtModule.forRoot({
+      config: {
+        // JWT configuration options
+      }
+    })
   ],
   providers: [
     {

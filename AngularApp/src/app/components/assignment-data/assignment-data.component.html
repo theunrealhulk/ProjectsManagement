@@ -1,0 +1,21 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput name="name" placeholder="project name" required [(ngModel)]="project.name" >
+  </mat-form-field>
+<mat-form-field>
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" name="duedate"  [(ngModel)]="project.duedate" >
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  <section>
+
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" (click)="save()"><mat-icon>save</mat-icon>save</button>
+    </div>
+  </section>
+
+
+</form>

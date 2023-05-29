@@ -1,0 +1,36 @@
+<mat-expansion-panel #panel="matExpansionPanel">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Project
+      <div class="navbar">
+        <span>
+          <p>lorem</p>
+        </span><span>
+          <p>lorem</p>
+        </span>
+        <span>
+          <p>lorem</p>
+        </span>
+        <span>
+          <p>lorem</p>
+        </span>
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-panel-description>
+
+  </mat-panel-description>
+
+  <!-- Add more data properties as needed -->
+
+  <!-- Optional: Add a button to toggle the panel -->
+  <button mat-icon-button matTooltip="Expand/Collapse" [matTooltipPosition]="'above'" (click)="panel.toggle()">
+    <mat-icon>
+      {{ panel.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+    </mat-icon>
+  </button>
+
+  <!-- Optional: Add additional content inside the panel -->
+
+</mat-expansion-panel>

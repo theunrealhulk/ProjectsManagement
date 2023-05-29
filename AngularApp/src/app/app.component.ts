@@ -30,10 +30,5 @@ export class AppComponent {
   isLoggedIn(){
     return this.authService.isLoggedIn();
   }
-  getAllProjects(){
-    this.authService.getAllProjects().subscribe((res)=>{
-      console.log(res.data);
 
-    })
-  }
 }

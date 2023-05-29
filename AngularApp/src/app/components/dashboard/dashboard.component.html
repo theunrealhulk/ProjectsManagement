@@ -1,10 +1,49 @@
 <mat-toolbar color="primary" class="navbar">
   <div>Dashboard</div>
   <div>
-    <span>Projects</span>
-    <span>Assignments</span>
+    <span matTooltip="All Project"><mat-icon>card_travel</mat-icon> Projects</span>
+    <span matTooltip="All Assignments"><mat-icon>task</mat-icon>Assignments</span>
     <span>
-      <span (click)="logout()"><mat-icon>logout</mat-icon></span>
+      <span matTooltip="logout" (click)="logout()"><mat-icon>logout</mat-icon></span>
     </span>
   </div>
 </mat-toolbar>
+<div class="content" style="width: 80%; margin: auto;">
+
+  <button mat-fab color="primary" style="margin: 1em;" (click)="openNewProjectDialog()" matTooltip="Add new Project">
+    <h1></h1><mat-icon>add</mat-icon><mat-icon>card_travel</mat-icon>
+  </button>
+
+  <h1 matTooltip="High priority projects"><mat-icon>electric_bolt</mat-icon><mat-icon>card_travel</mat-icon></h1>
+  <mat-tab-group>
+    <mat-tab label="Over Due">
+      {{overDues|json}}
+    </mat-tab>
+    <mat-tab label="Due today">
+      {{toDays|json}}
+    </mat-tab>
+    <mat-tab label="Due this week">
+      {{thisWeek|json}}
+    </mat-tab>
+  </mat-tab-group>
+  <mat-divider class="margin"></mat-divider>
+  <h1 matTooltip="High priority Assignments"><mat-icon>electric_bolt</mat-icon><mat-icon>task</mat-icon></h1>
+  <mat-tab-group>
+    <mat-tab label="Over Due">
+      <p>no data</p>
+    </mat-tab>
+    <mat-tab label="Due today">
+       <p>no data</p>
+      </mat-tab>
+    <mat-tab label="Due this week">
+       <p>no data</p>
+     </mat-tab>
+  </mat-tab-group>
+  <mat-divider class="margin"></mat-divider>
+  <h1 matTooltip="User projects"><mat-icon>person</mat-icon><mat-icon>card_travel</mat-icon></h1>
+  {{allProjects|json}}
+  <mat-divider class="margin"></mat-divider>
+  <h1 matTooltip="User Assignments"><mat-icon>person</mat-icon><mat-icon>task</mat-icon></h1>
+  {{allAssignment|json}}
+
+</div>
