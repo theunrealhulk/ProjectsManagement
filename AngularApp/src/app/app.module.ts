@@ -31,7 +31,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AssignmentDataComponent } from './components/assignment-data/assignment-data.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';;
 import {MatNativeDateModule} from '@angular/material/core';
-
+import { BrowsProjectsComponent } from './components/brows-projects/brows-projects.component';
+import { BrowsAssignmentsComponent } from './components/brows-assignments/brows-assignments.component';
+import { ProjectDataComponent } from './components/project-data/project-data.component';
+import { DataPresenterComponent } from './components/data-presenter/data-presenter.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 // import {FormsModule} from '@angular/forms';
@@ -44,6 +48,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     HomeComponent,
     ItemViewComponent,
     AssignmentDataComponent,
+    BrowsProjectsComponent,
+    BrowsAssignmentsComponent,
+    ProjectDataComponent,
+    DataPresenterComponent,
 
 
   ],
@@ -69,6 +77,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
+
     JwtModule.forRoot({
       config: {
         // JWT configuration options

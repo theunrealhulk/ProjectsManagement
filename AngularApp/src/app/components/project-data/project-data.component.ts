@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
-
 @Component({
-  selector: 'app-assignment-data',
-  templateUrl: './assignment-data.component.html',
-  styleUrls: ['./assignment-data.component.css']
+  selector: 'app-project-data',
+  templateUrl: './project-data.component.html',
+  styleUrls: ['./project-data.component.css']
 })
-export class AssignmentDataComponent {
+export class ProjectDataComponent {
   constructor(private authService: AuthService){}
-  title='Assignment'
+  title='Projects'
 project={
   name:"",
   duedate:''
@@ -18,7 +17,6 @@ project={
 save(){
   this.authService.saveProject(this.project).subscribe(res =>{
     console.log(res.data);
-
   })
 }
 }

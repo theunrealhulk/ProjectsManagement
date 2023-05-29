@@ -1,8 +1,8 @@
 <mat-toolbar color="primary" class="navbar">
   <div>Dashboard</div>
   <div>
-    <span matTooltip="All Project"><mat-icon>card_travel</mat-icon> Projects</span>
-    <span matTooltip="All Assignments"><mat-icon>task</mat-icon>Assignments</span>
+    <span matTooltip="All Project" (click)="openAllProjectDialog()"><mat-icon>card_travel</mat-icon> Projects</span>
+    <span matTooltip="All Assignments" (click)="openAllAssignments()"><mat-icon>task</mat-icon>Assignments</span>
     <span>
       <span matTooltip="logout" (click)="logout()"><mat-icon>logout</mat-icon></span>
     </span>
@@ -17,33 +17,45 @@
   <h1 matTooltip="High priority projects"><mat-icon>electric_bolt</mat-icon><mat-icon>card_travel</mat-icon></h1>
   <mat-tab-group>
     <mat-tab label="Over Due">
-      {{overDues|json}}
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="overDues"></app-data-presenter>
+      </ng-template>
     </mat-tab>
     <mat-tab label="Due today">
-      {{toDays|json}}
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="toDays"></app-data-presenter>
+      </ng-template>
     </mat-tab>
     <mat-tab label="Due this week">
-      {{thisWeek|json}}
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="thisWeek"></app-data-presenter>
+      </ng-template>
     </mat-tab>
   </mat-tab-group>
   <mat-divider class="margin"></mat-divider>
   <h1 matTooltip="High priority Assignments"><mat-icon>electric_bolt</mat-icon><mat-icon>task</mat-icon></h1>
-  <mat-tab-group>
-    <mat-tab label="Over Due">
-      <p>no data</p>
-    </mat-tab>
-    <mat-tab label="Due today">
-       <p>no data</p>
+    <mat-tab-group>
+      <mat-tab label="Over Due">
+        <ng-template matTabContent>
+          <app-data-presenter [dataSource]="overDuesAssignment"></app-data-presenter>
+        </ng-template>
       </mat-tab>
-    <mat-tab label="Due this week">
-       <p>no data</p>
-     </mat-tab>
-  </mat-tab-group>
+      <mat-tab label="Due today">
+        <ng-template matTabContent>
+          <app-data-presenter [dataSource]="toDaysAssignment"></app-data-presenter>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Due this week">
+        <ng-template matTabContent>
+          <app-data-presenter [dataSource]="thisWeekAssignment"></app-data-presenter>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
   <mat-divider class="margin"></mat-divider>
   <h1 matTooltip="User projects"><mat-icon>person</mat-icon><mat-icon>card_travel</mat-icon></h1>
-  {{allProjects|json}}
+  <app-data-presenter [dataSource]="userProjects"></app-data-presenter>
   <mat-divider class="margin"></mat-divider>
   <h1 matTooltip="User Assignments"><mat-icon>person</mat-icon><mat-icon>task</mat-icon></h1>
-  {{allAssignment|json}}
+  <app-data-presenter [dataSource]="userAssignment"></app-data-presenter>
 
 </div>

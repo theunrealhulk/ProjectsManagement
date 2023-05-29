@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import { AssignmentDataComponent } from '../assignment-data/assignment-data.component';
+import { ProjectDataComponent } from '../project-data/project-data.component';
+import { BrowsProjectsComponent } from '../brows-projects/brows-projects.component';
+import { BrowsAssignmentsComponent } from '../brows-assignments/brows-assignments.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +22,9 @@ export class DashboardComponent implements OnInit {
  toDays: Project[] = [];
  thisWeek: Project[] = [];
  today = new Date();
+ overDuesAssignment: Assignment[] = [];
+ toDaysAssignment: Assignment[] = [];
+ thisWeekAssignment: Assignment[] = [];
 
   constructor(private authService: AuthService,private snakBar :MatSnackBar,private matdialog:MatDialog){ }
 
@@ -69,10 +75,28 @@ export class DashboardComponent implements OnInit {
       // console.log("assignments");
       // console.log(res.data);
       this.allAssignment = res.data
+      this.allAssignment.forEach((assignment) => {
+        const dueDate = new Date(assignment.dueDate);
+
+        // Compare the due date with today's date
+        if (dueDate < this.today) {
+          this.overDuesAssignment.push(assignment);
+        } else if (dueDate.toDateString() === this.today.toDateString()) {
+          this.toDaysAssignment.push(assignment);
+        } else if (dueDate > this.today && dueDate <= new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate() + 7)) {
+          this.thisWeekAssignment.push(assignment);
+        }
+      });
     })
   }
   openNewProjectDialog(){
-    this.matdialog.open(AssignmentDataComponent)
+    this.matdialog.open(ProjectDataComponent)
+  }
+  openAllProjectDialog(){
+    this.matdialog.open(BrowsProjectsComponent)
+  }
+  openAllAssignments(){
+    this.matdialog.open(BrowsAssignmentsComponent)
   }
   ngOnInit(){
     this.UserAssignments();
