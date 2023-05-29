@@ -238,14 +238,15 @@ namespace ProjectsManager.Services.ProjectService
             var response = new ServiceResponse<List<GetAssignmentDto>>();
             try
             {
-                User Usre = await _context.Users.Include(a=> a.Assignments).FirstOrDefaultAsync(u => u.Id == id);
-                if (Usre == null)
+                List<Assignment> UsreAssignments = await _context.Assignments.Include(a=> a.Project).Include(a=>a.Project.User).Where(a => a.User.Id == id).ToListAsync();
+
+                if (UsreAssignments == null)
                 {
                     response.Success=false;
                     response.Message = "User not found";
                     return response;
                 }
-                response.Data = _mapper.Map<List<GetAssignmentDto>>(Usre.Assignments);
+                response.Data = _mapper.Map<List<GetAssignmentDto>>(UsreAssignments);
             }
             catch(Exception e) 
             {

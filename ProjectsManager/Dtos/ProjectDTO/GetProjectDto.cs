@@ -9,6 +9,7 @@ namespace ProjectsManager.Dtos.Project
         public DateTime DueDate { get; set; } = DateTime.Now;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public int userId { get; set; }
         public List<GetAssignmentDto> Assignments { get; set; }
     }
 }
