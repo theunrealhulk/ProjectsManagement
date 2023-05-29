@@ -1,1 +1,13 @@
-<app-data-presenter [dataSource]="userProjects"></app-data-presenter>
+<!-- todo add filters!! -->
+<div style="
+padding: 1.5em;
+overflow-y: scroll;
+">
+  <app-data-presenter [dataSource]="allProjects" [columns]="[
+  { key: 'name', label: 'Project Name' },
+  { key: 'dueDate', label: 'Due Date' },
+  { key: 'username', label: 'Manager' },
+  { key: 'assignments', label: 'N. Of Tasks' }
+]"></app-data-presenter>
+
+</div>

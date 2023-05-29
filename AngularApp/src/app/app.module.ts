@@ -36,6 +36,8 @@ import { BrowsAssignmentsComponent } from './components/brows-assignments/brows-
 import { ProjectDataComponent } from './components/project-data/project-data.component';
 import { DataPresenterComponent } from './components/data-presenter/data-presenter.component';
 import { MatTableModule } from '@angular/material/table';
+import { DataRepositoryService } from './services/data-repository.service';
+
 
 
 // import {FormsModule} from '@angular/forms';
@@ -86,6 +88,7 @@ import { MatTableModule } from '@angular/material/table';
     })
   ],
   providers: [
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,

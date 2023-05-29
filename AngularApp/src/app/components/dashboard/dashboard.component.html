@@ -8,8 +8,8 @@
     </span>
   </div>
 </mat-toolbar>
-<div class="content" style="width: 80%; margin: auto;">
 
+<div class="content" style="width: 80%; margin: auto;">
   <button mat-fab color="primary" style="margin: 1em;" (click)="openNewProjectDialog()" matTooltip="Add new Project">
     <h1></h1><mat-icon>add</mat-icon><mat-icon>card_travel</mat-icon>
   </button>
@@ -18,44 +18,97 @@
   <mat-tab-group>
     <mat-tab label="Over Due">
       <ng-template matTabContent>
-        <app-data-presenter [dataSource]="overDues"></app-data-presenter>
+        <app-data-presenter [dataSource]="getDataRepo().overDues" [columns]="[
+          { key: 'name', label: 'Project Name' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'username', label: 'Manager' },
+          { key: 'assignments', label: 'N. Of Tasks' }
+        ]" [actions]="[{url:'prj/edit',label:'edit'}]"></app-data-presenter>
       </ng-template>
     </mat-tab>
     <mat-tab label="Due today">
       <ng-template matTabContent>
-        <app-data-presenter [dataSource]="toDays"></app-data-presenter>
+        <app-data-presenter [dataSource]="getDataRepo().toDays" [columns]="[
+          { key: 'name', label: 'Project Name' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'username', label: 'Manager' },
+          { key: 'assignments', label: 'N. Of Tasks' }
+        ]"></app-data-presenter>
       </ng-template>
     </mat-tab>
     <mat-tab label="Due this week">
       <ng-template matTabContent>
-        <app-data-presenter [dataSource]="thisWeek"></app-data-presenter>
+        <app-data-presenter [dataSource]="getDataRepo().thisWeek" [columns]="[
+          { key: 'name', label: 'Project Name' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'username', label: 'Manager' },
+          { key: 'assignments',  label: 'N. Of Tasks' }
+        ]"></app-data-presenter>
       </ng-template>
     </mat-tab>
   </mat-tab-group>
-  <mat-divider class="margin"></mat-divider>
-  <h1 matTooltip="High priority Assignments"><mat-icon>electric_bolt</mat-icon><mat-icon>task</mat-icon></h1>
-    <mat-tab-group>
-      <mat-tab label="Over Due">
-        <ng-template matTabContent>
-          <app-data-presenter [dataSource]="overDuesAssignment"></app-data-presenter>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Due today">
-        <ng-template matTabContent>
-          <app-data-presenter [dataSource]="toDaysAssignment"></app-data-presenter>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Due this week">
-        <ng-template matTabContent>
-          <app-data-presenter [dataSource]="thisWeekAssignment"></app-data-presenter>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-  <mat-divider class="margin"></mat-divider>
-  <h1 matTooltip="User projects"><mat-icon>person</mat-icon><mat-icon>card_travel</mat-icon></h1>
-  <app-data-presenter [dataSource]="userProjects"></app-data-presenter>
-  <mat-divider class="margin"></mat-divider>
-  <h1 matTooltip="User Assignments"><mat-icon>person</mat-icon><mat-icon>task</mat-icon></h1>
-  <app-data-presenter [dataSource]="userAssignment"></app-data-presenter>
 
+  <mat-divider class="margin"></mat-divider>
+
+  <h1 matTooltip="High priority Assignments"><mat-icon>electric_bolt</mat-icon><mat-icon>task</mat-icon></h1>
+  <mat-tab-group>
+    <mat-tab label="Over Due">
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="getDataRepo().overDuesAssignment" [columns]="[
+          { key: 'projectName', label: 'Project' },
+          { key: 'title', label: 'Title' },
+          { key: 'description', label: 'Description' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'status', label: 'Status' },
+          { key: 'username', label: 'N. Of Tasks' }
+        ]"></app-data-presenter>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Due today">
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="getDataRepo().toDaysAssignment" [columns]="[
+          { key: 'projectName', label: 'Project' },
+          { key: 'title', label: 'Title' },
+          { key: 'description', label: 'Description' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'status', label: 'Status' },
+          { key: 'username', label: 'Assignee' }
+        ]"></app-data-presenter>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Due this week">
+      <ng-template matTabContent>
+        <app-data-presenter [dataSource]="getDataRepo().thisWeekAssignment" [columns]="[
+          { key: 'projectName', label: 'Project' },
+          { key: 'title', label: 'Title' },
+          { key: 'description', label: 'Description' },
+          { key: 'dueDate', label: 'Due Date' },
+          { key: 'status', label: 'Status' },
+          { key: 'username', label: 'Assignee' }
+        ]"></app-data-presenter>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+
+  <mat-divider class="margin"></mat-divider>
+
+  <h1 matTooltip="User projects"><mat-icon>person</mat-icon><mat-icon>card_travel</mat-icon></h1>
+  <app-data-presenter [dataSource]="getDataRepo().userProjects" [columns]="[
+    { key: 'name', label: 'Project Name' },
+    { key: 'dueDate', label: 'Due Date' },
+    { key: 'username', label: 'Manager' },
+    { key: 'assignments',  label: 'N. Of Tasks' }
+  ]"></app-data-presenter>
+
+  <mat-divider class="margin"></mat-divider>
+
+  <h1 matTooltip="User Assignments"><mat-icon>person</mat-icon><mat-icon>task</mat-icon></h1>
+  <app-data-presenter [dataSource]="getDataRepo().userAssignments" [columns]="[
+  { key: 'projectName', label: 'Project' },
+  { key: 'title', label: 'Title' },
+  { key: 'description', label: 'Description' },
+  { key: 'dueDate', label: 'Due Date' },
+  { key: 'status', label: 'Status' },
+  { key: 'username', label: 'Assignee' }
+]"></app-data-presenter>
 </div>

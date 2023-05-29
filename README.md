@@ -5,6 +5,12 @@ this is a dotnet 6 API with a Angular frontend
 ## Dotnet backend
 
 cd into ProjectsManager and run 
+install dotnet-ef to run migration
+```
+dotnet tool install --global dotnet-ef
+dotnet ef update database
+```
+install nugget packages and run the API
 ```
 dotnet restore
 dotnet run

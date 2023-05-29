@@ -17,6 +17,7 @@ project={
 save(){
   this.authService.saveProject(this.project).subscribe(res =>{
     console.log(res.data);
+    window.location.reload();
   })
 }
 }

@@ -1,1 +1,9 @@
-<app-data-presenter [dataSource]="allAssignments"></app-data-presenter>
+<!-- todo add filters!! -->
+<app-data-presenter [dataSource]="allAssignments" [columns]="[
+{ key: 'projectName', label: 'Project' },
+{ key: 'title', label: 'Title' },
+{ key: 'description', label: 'Description' },
+{ key: 'dueDate', label: 'Due Date' },
+{ key: 'status', label: 'Status' },
+{ key: 'username', label: 'Assignee' }
+]"></app-data-presenter>
